@@ -6,51 +6,129 @@
     <meta name="description" content="Explore a gallery of Pavel Durov, featuring images from key events, personal life, and his projects like Telegram and VKontakte.">
     <meta name="keywords" content="Pavel Durov, Gallery, Images, Telegram, VKontakte, Tech Innovator">
     <title>Gallery of Pavel Durov - Images from Events and Projects</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
     <style>
-nav ul li a.active {
-    background-color: #555;
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-.gallery figure {
-    margin: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-}
+        header {
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
 
-.gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
+        nav ul {
+            list-style: none;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-img {
-    clip-path: polygon(0% 0%, 100% 3%, 98% 99%, 3% 93%);
-}
+        nav ul li {
+            display: inline-block;
+            position: relative;
+        }
 
-.gallery figcaption {
-    text-align: center;
-    color: #333;
-    font-style: italic;
-    font-size: 0.9em;
-    margin-top: 5px;
-}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+        }
 
-@media (max-width: 768px) {
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); 
-    }
-}
+        nav ul li:hover > ul {
+            display: block;
+        }
 
-@media (max-width: 480px) {
-    .gallery {
-        grid-template-columns: 1fr; 
-    }
-}
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #555;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
+        nav ul li ul li {
+            display: block;
+        }
+
+        nav ul li ul li a {
+            padding: 10px;
+        }
+
+        aside {
+            background: url('images/telegram.jpg') no-repeat;
+            background-size: cover;
+            padding: 20px;
+            color: white;
+        }
+
+        main {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery figure {
+            margin: 0;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery figure:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .gallery figcaption {
+            text-align: center;
+            color: #333;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: linear-gradient(to right, #acb6e5, #74ebd5);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            nav ul.open {
+                display: block;
+            }
+
+            nav .menu-toggle {
+                display: block;
+                background-color: #333;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+            }
+        }
     </style>
 </head>
 <body>
@@ -58,35 +136,74 @@ img {
         <h1>Pavel Durov Gallery</h1>
     </header>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="media.html">Media</a></li>
-            <li><a href="contact.html">Contact</a></li>
+        <div class="menu-toggle" onclick="toggleMenu()">Menu</div>
+        <ul id="nav-list">
+            <li><a href="index.html">Home</a>
+                <ul>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
-    <aside style="background-image: url('telegram.jpg');">
-        <h3><em>Projects:</em></h3>
-        <div class="button-style">
-            <button><a href="https://telegram.org/">Telegram Official</a></button>
-            <button><a href="https://vk.com/">VKontakte</a></button>
-        </div>    
+    <aside>
+        <h3>Projects:</h3>
+        <ul>
+            <li><a href="https://telegram.org/">Telegram Official</a></li>
+            <li><a href="https://vk.com/">VKontakte</a></li>
+        </ul>
     </aside>
-    <main style="background-image: url('bk.jpg');">
-        <div class="gallery">
-            <img src="1.jpg" alt="Pavel Durov at an event">
-            <img src="conference.jpg" alt="Pavel Durov speaking at a conference">
-            <img src="3.jpg" alt="Pavel Durov in a meeting">
-            <img src="durov4.jpeg" alt="Pavel Durov with Telegram team">
-            <img src="durov5.jpeg" alt="Pavel Durov at VK office">
-            <img src="durov6.jpeg" alt="Pavel Durov during an interview">
-            <img src="durov7.webp" alt="Pavel Durov at a tech summit">
-            <img src="durov8.avif" alt="Pavel Durov receiving an award">
-            <img src="durov9.webp" alt="Pavel Durov in a casual setting">
-        </div>
+    <main>
+        <figure class="gallery">
+            <img src="images/1.jpg" alt="Pavel Durov at an event">
+            <figcaption>Pavel Durov at an event</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/conference.jpg" alt="Pavel Durov speaking at a conference">
+            <figcaption>Pavel Durov speaking at a conference</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/3.jpg" alt="Pavel Durov in a meeting">
+            <figcaption>Pavel Durov in a meeting</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/durov4.jpeg" alt="Pavel Durov with Telegram team">
+            <figcaption>Pavel Durov with Telegram team</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/durov5.jpeg" alt="Pavel Durov at VK office">
+            <figcaption>Pavel Durov at VK office</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/durov6.jpeg" alt="Pavel Durov during an interview">
+            <figcaption>Pavel Durov during an interview</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/durov7.webp" alt="Pavel Durov at a tech summit">
+            <figcaption>Pavel Durov at a tech summit</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/durov8.avif" alt="Pavel Durov receiving an award">
+            <figcaption>Pavel Durov receiving an award</figcaption>
+        </figure>
+        <figure class="gallery">
+            <img src="images/durov9.webp" alt="Pavel Durov in a casual setting">
+            <figcaption>Pavel Durov in a casual setting</figcaption>
+        </figure>
     </main>
     <footer>
         <p>&copy; 2024 Pavel Durov's Gallery. All rights reserved.</p>
     </footer>
+    <script>
+        function toggleMenu() {
+            var navList = document.getElementById('nav-list');
+            if (navList.classList.contains('open')) {
+                navList.classList.remove('open');
+            } else {
+                navList.classList.add('open');
+            }
+        }
+    </script>
 </body>
 </html>
